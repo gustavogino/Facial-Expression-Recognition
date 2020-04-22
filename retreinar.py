@@ -1,7 +1,7 @@
-from keras.models import load_model
-from keras.utils import np_utils
-from keras import optimizers
-from keras.callbacks import ModelCheckpoint
+from tensorflow.keras.models import load_model
+from tensorflow.python.keras.utils import np_utils
+from tensorflow.keras import optimizers
+from tensorflow.keras.callbacks importModelCheckpoint
 import numpy as np
 import pickle
 from time import time

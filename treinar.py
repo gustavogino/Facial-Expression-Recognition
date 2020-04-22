@@ -43,7 +43,11 @@ def cnn_modelo():
 	sgd = optimizers.SGD(lr=1e-3)
 	modelo.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 	filepath="modelo/expressao.h5"
+<<<<<<< HEAD
+	checkpoint1 = ModelCheckpoint(filepath, monitor='val_accuracy', verbose=1, save_best_only=True, mode='auto')
+=======
 	checkpoint1 = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
+>>>>>>> parent of 854b029... Update
 	callbacks_list = [checkpoint1]
 	from keras.utils import plot_model
 	plot_model(modelo, to_file='modelo/treino/modelo.png', show_shapes=True)

@@ -3,7 +3,7 @@ import numpy as np
 import dlib, os
 from imutils import face_utils
 from imutils.face_utils import FaceAligner
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 import time
 
 def transparencia(face_img, sobreposicao):
