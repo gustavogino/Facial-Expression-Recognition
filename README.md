@@ -1,4 +1,5 @@
-# emotion-recognition
+# Emotion Recognition
+
 Reconhecimento de expressões faciais usando OpenCV e Keras
 
 Vídeo demonstrativo: https://www.youtube.com/watch?v=fFOldbHtHQU
