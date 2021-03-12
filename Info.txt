@@ -1,0 +1,7 @@
+0=Neutro
+1=Feliz
+2=Triste
+3=Surpreso
+4=Bravo
+5=Medo
+6=Nojo

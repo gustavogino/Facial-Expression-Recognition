@@ -3,7 +3,7 @@ import numpy as np
 
 #Funções das funções
 def pegar_tamanho():
-	img = cv2.imread('utils/tamanho.jpg', 0)
+	img = cv2.imread('../utils/tamanho.jpg', 0)
 	return img.shape
 
 
@@ -15,7 +15,7 @@ def renomear():
 
 
 	for nome_pasta in os.listdir(path):
-		path2 = path+"/"+nome_pasta+"/"
+		path2 = "../"+path+"/"+nome_pasta+"/"
 		files = os.listdir(path2)
 		i = x
 		for file in files:
@@ -35,8 +35,8 @@ def espelhar():
 	pasta = pasta_raiz
 	for nome_pasta in os.listdir(pasta):
 		for i in range(num_img):
-			path = pasta+"/"+nome_pasta+"/"+str(i)+".jpg"
-			new_path = pasta+"/"+nome_pasta+"/"+str(i+num_img)+".jpg"
+			path = "../"+pasta+"/"+nome_pasta+"/"+str(i)+".jpg"
+			new_path = "../"+pasta+"/"+nome_pasta+"/"+str(i+num_img)+".jpg"
 			print("Espelhando a imagem: " +path)
 			img = cv2.imread(path, 0)
 			img = cv2.flip(img, 1)

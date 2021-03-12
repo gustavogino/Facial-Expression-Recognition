@@ -1,6 +1,7 @@
+import os
 import numpy as np
 import pickle
-import cv2, os
+import cv2
 from keras import optimizers
 from keras.models import Sequential
 from keras.layers import Dense
@@ -15,8 +16,10 @@ from keras import backend as K
 from keras.callbacks import TensorBoard
 from keras.models import load_model
 from time import time
-K.set_image_dim_ordering('tf')
-os.environ["PATH"] += os.pathsep + 'C:/Program Files (x86)/Graphviz2.38/bin/'
+import tensorflow as tf
+K.image_data_format()
+#K.set_image_dim_ordering('tf')
+os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin'
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
@@ -25,7 +28,7 @@ def pega_tam_img():
 	return img.shape
 
 def pega_num_tipos():
-	return len(os.listdir('dados_full/'))
+	return len(os.listdir('dados/'))
 
 image_x, image_y = pega_tam_img()
 
@@ -43,19 +46,15 @@ def cnn_modelo():
 	sgd = optimizers.SGD(lr=1e-3)
 	modelo.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 	filepath="modelo/expressao.h5"
-<<<<<<< HEAD
-	checkpoint1 = ModelCheckpoint(filepath, monitor='val_accuracy', verbose=1, save_best_only=True, mode='auto')
-=======
-	checkpoint1 = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
->>>>>>> parent of 854b029... Update
+	checkpoint1 = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 	callbacks_list = [checkpoint1]
 	from keras.utils import plot_model
 	plot_model(modelo, to_file='modelo/treino/modelo.png', show_shapes=True)
 	return modelo, callbacks_list
 
 def treinar():
-	epoca = int(input("Digite o número de épocas que deseja treinar: "))
-	tamanho = int(input("Digite o tamanho do batch size: "))
+	epoca = 300
+	tamanho = 100
 
 	with open("modelo/treino/imagem_treino", "rb") as f:
 		imagem_treino = np.array(pickle.load(f))
@@ -81,7 +80,7 @@ def treinar():
 	valor_rotulo = np_utils.to_categorical(valor_rotulo)
 
 	modelo, callbacks_list = cnn_modelo()
-	tensorboard = TensorBoard(log_dir="./logs/{}".format(time()))
+	tensorboard = TensorBoard(log_dir="logs\\{}".format(time()))
 	callbacks_list.append(tensorboard)
 	modelo.fit(imagem_treino, rotulo_treino, validation_data=(imagem_teste, rotulo_teste), epochs=epoca, batch_size=tamanho, callbacks=callbacks_list)
 	modelo = load_model('modelo/expressao.h5')

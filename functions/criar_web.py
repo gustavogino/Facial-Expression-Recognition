@@ -26,7 +26,7 @@ def cria_mascara(shape, img):
 	return mascara	
 
 def criar_web():
-	shape_predictor_68 = dlib.shape_predictor("utils/shape_predictor_68_face_landmarks.dat")
+	shape_predictor_68 = dlib.shape_predictor("../utils/shape_predictor_68_face_landmarks.dat")
 	detector = dlib.get_frontal_face_detector()
 
 	cam = cv2.VideoCapture(0) #Camera default
@@ -40,7 +40,7 @@ def criar_web():
 	fa = FaceAligner(shape_predictor_68, desiredFaceWidth=1000)
 
 
-	base_dados = 'dados/'
+	base_dados = '../dados/'
 	id_img = int(input('Digite o ID: '))
 	num_img = int(input('Digite a quantidade de imagens que deseja: '))
 	num_inicial = int(input('Digite o número de inicio: '))

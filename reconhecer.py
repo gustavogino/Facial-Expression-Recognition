@@ -3,7 +3,7 @@ import numpy as np
 import dlib, os
 from imutils import face_utils
 from imutils.face_utils import FaceAligner
-from tensorflow.keras.models import load_model
+from keras.models import load_model
 import time
 
 def transparencia(face_img, sobreposicao):
@@ -91,7 +91,7 @@ if cam is None:
 
 emoticon = pega_emoticon()
 disp_probab, disp_class = 0, 0
-expressao = ['Neutro','Feliz','Triste','Surpreso','Bravo','Medo']
+expressao = ['Neutro','Feliz','Triste','Surpreso','Bravo','Medo','Nojo']
 
 fa = FaceAligner(shape_predictor_68, desiredFaceWidth=1000)
 
